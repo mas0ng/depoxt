@@ -3,84 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto-Switch Pages</title>
+    <title>Content Unavailable</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            background-color: #1a1a1a; /* Dark grey background */
-            color: white; /* White text */
+            background-color: white;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
         }
-        .content {
+        .icon {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            border: 5px solid red;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .icon::before, .icon::after {
+            content: '';
+            position: absolute;
+            background-color: red;
+        }
+        .icon::before {
+            width: 60%;
+            height: 10%;
+            transform: rotate(45deg);
+        }
+        .icon::after {
+            width: 60%;
+            height: 10%;
+            transform: rotate(-45deg);
+        }
+        .message {
             margin-top: 20px;
-            text-align: center;
-            font-size: 24px;
-        }
-        .button-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .button {
-            padding: 10px 20px;
-            font-size: 16px;
-            color: white;
-            background-color: transparent;
-            border: 2px solid white;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        .button:hover {
-            background-color: #444;
+            color: black;
+            font-size: 18px;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="page1" class="content">Are you a game DEV? You can submit your game and have it featured on depoxt.xyz!</div>
-    <div id="page2" class="content" style="display: none;">Page 2 Content</div>
-    <div id="page3" class="content" style="display: none;">Page 3 Content</div>
-    <div id="page4" class="content" style="display: none;">Page 4 Content</div>
-    <div id="page5" class="content" style="display: none;">Page 5 Content</div>
-
-    <div class="button-container" id="button-container1" style="display: block;">
-        <a href="https://www.depoxt.xyz/dev" target="_blank" class="button">Find Out More!</a>
-    </div>
-    <div class="button-container" id="button-container2" style="display: none;">
-        <a href="https://www.example2.com" target="_blank" class="button">Next Page</a>
-    </div>
-    <div class="button-container" id="button-container3" style="display: none;">
-        <a href="https://www.example3.com" target="_blank" class="button">Next Page</a>
-    </div>
-    <div class="button-container" id="button-container4" style="display: none;">
-        <a href="https://www.example4.com" target="_blank" class="button">Next Page</a>
-    </div>
-    <div class="button-container" id="button-container5" style="display: none;">
-        <a href="https://www.example5.com" target="_blank" class="button">Next Page</a>
-    </div>
-
-    <script>
-        let currentPage = 1;
-        const totalPages = 5;
-
-        function showPage(page) {
-            for (let i = 1; i <= totalPages; i++) {
-                document.getElementById('page' + i).style.display = 'none';
-                document.getElementById('button-container' + i).style.display = 'none';
-            }
-            document.getElementById('page' + page).style.display = 'block';
-            document.getElementById('button-container' + page).style.display = 'block';
-        }
-
-        function nextPage() {
-            currentPage = (currentPage % totalPages) + 1;
-            showPage(currentPage);
-        }
-
-        setInterval(nextPage, 5000);
-        showPage(currentPage);
-    </script>
+    <div class="icon"></div>
+    <div class="message">This content is currently unavailable</div>
 </body>
 </html>

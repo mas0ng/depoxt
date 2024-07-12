@@ -3,38 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Content Unavailable</title>
+    <title>Auto-Switch Pages</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
+            padding: 0;
+            background-color: #1a1a1a; /* Dark grey background */
+            color: white; /* White text */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100vh;
         }
-        .container {
+        .content {
+            margin-top: 20px;
             text-align: center;
-            padding: 20px;
-            border: 1px solid #ccc;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .container h1 {
             font-size: 24px;
-            margin-bottom: 10px;
         }
-        .container p {
-            font-size: 18px;
-            color: #666;
+        .button-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: transparent;
+            border: 2px solid white;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #444;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Ad Currently Unavailable</h1>
-        <p>Ads are not yet supported.</p>
+    <div id="page1" class="content">Are you a game DEV? You can submit your game and have it featured on depoxt.xyz!</div>
+    <div id="page2" class="content" style="display: none;">Page 2 Content</div>
+    <div id="page3" class="content" style="display: none;">Page 3 Content</div>
+    <div id="page4" class="content" style="display: none;">Page 4 Content</div>
+    <div id="page5" class="content" style="display: none;">Page 5 Content</div>
+
+    <div class="button-container" id="button-container1" style="display: block;">
+        <a href="https://www.depoxt.xyz/dev" target="_blank" class="button">Find Out More!</a>
     </div>
+    <div class="button-container" id="button-container2" style="display: none;">
+        <a href="https://www.example2.com" target="_blank" class="button">Next Page</a>
+    </div>
+    <div class="button-container" id="button-container3" style="display: none;">
+        <a href="https://www.example3.com" target="_blank" class="button">Next Page</a>
+    </div>
+    <div class="button-container" id="button-container4" style="display: none;">
+        <a href="https://www.example4.com" target="_blank" class="button">Next Page</a>
+    </div>
+    <div class="button-container" id="button-container5" style="display: none;">
+        <a href="https://www.example5.com" target="_blank" class="button">Next Page</a>
+    </div>
+
+    <script>
+        let currentPage = 1;
+        const totalPages = 5;
+
+        function showPage(page) {
+            for (let i = 1; i <= totalPages; i++) {
+                document.getElementById('page' + i).style.display = 'none';
+                document.getElementById('button-container' + i).style.display = 'none';
+            }
+            document.getElementById('page' + page).style.display = 'block';
+            document.getElementById('button-container' + page).style.display = 'block';
+        }
+
+        function nextPage() {
+            currentPage = (currentPage % totalPages) + 1;
+            showPage(currentPage);
+        }
+
+        setInterval(nextPage, 5000);
+        showPage(currentPage);
+    </script>
 </body>
 </html>

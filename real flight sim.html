@@ -1,0 +1,246 @@
+<html><head>
+    <title>Real Flight Simulator</title>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="full-screen" content="true">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="360-fullscreen" content="true">
+    <meta name="laya" screenorientation="landscape">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- 手机打开开发者模式 -->
+    <!-- <script src="https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js"></script>
+     <script>
+     var vConsole = new VConsole();
+     </script> -->
+    <script src="https://s0.2mdn.net/instream/video/client.js" async="" type="text/javascript"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" id="analytics" async="" src="https://gamemonetize.com/ga.js"></script><script type="text/javascript" async="" src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script><script type="text/javascript" src="https://h5gamessdk.yyggames.com/sdk/YYGGames.js" data-adapter="laya" data-channel="cargames"></script><iframe style="display: none;"></iframe><iframe style="display: none;"></iframe><link rel="stylesheet" type="text/css" href="https://h5gamessdk.yyggames.com/sdk/css/GUI/index.css">
+    <script src="https://h5gamessdk.yyggames.com/sdk/h5splash.js "></script>
+<style>/* 游戏加载 */
+        .loading-container {
+            height: 100%;
+            width: 100vw;
+            top: 0px;
+            left: 0px;
+            z-index: 1000;
+            position: fixed;
+            overflow: hidden;
+            background: rgb(91, 133, 218);
+        }
+        
+        .loading-container .img-container {
+            flex: 0 1 0%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10vh;
+        }
+        
+        .loading-container .img-container .logo-img {
+            width: 70vh;
+            max-width: 90%;
+        }
+        
+        .loading-container .img-container .banner-img {
+            border-radius: 10px;
+            border: 2px solid rgb(255, 255, 255);
+            margin-top: 10px;
+            width: 40vh;
+            display: none;
+            max-width: 90%;
+        }
+        
+        .loading-container .progress-container {
+            position: absolute;
+            width: 100%;
+            bottom: 5vh;
+            align-items: center;
+            flex: 0 1 0%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .loading-container .progress-container .progress-text {
+            font-size: 16px;
+            font-family: Arial;
+            margin-bottom: 10px;
+        }
+        
+        .loading-container .progress-container .progress-bar_ {
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0);
+            margin-bottom: 5px;
+            max-width: 90%;
+        }
+        
+        .loading-container .progress-container .progress-img {
+            width: 250px;
+            max-width: 80%;
+        }
+
+        @media only screen and (min-width: 300px) {
+        
+            .loading-container .progress-container .progress-text {
+                font-size: 20px;
+            }
+        
+            .loading-container .img-container .banner-img {
+                max-width: 350px;
+            }
+        
+            .loading-container .img-container .logo-img {
+                max-width: 350px;
+            }
+        }
+        
+        @media only screen and (max-height: 300px) {
+
+            .loading-container .progress-container .progress-text {
+                margin-bottom: 5px !important;
+            }
+
+            .loading-container .progress-container .progress-bar_ {
+                margin-bottom: 10px !important;
+            }
+        }
+
+        
+        @media only screen and (min-height: 450px) {
+        
+            .loading-container .img-container .logo-img {
+                width: 40vh;
+            }
+        
+            .loading-container .img-container .banner-img {
+                display: block;
+            }
+        }</style><style>
+            progress{
+                height: 15px;
+                background-color:rgba(0,0,0,0.2);
+                border-radius: 20px;
+                border:2px solid #fff;
+            }
+            progress::-webkit-progress-bar
+            {
+                background-color:rgba(0,0,0,0.2);
+                border-radius: 20px;
+            }
+
+            progress::-moz-progress-bar{
+                background-image:-webkit-linear-gradient(left, #ffb726,#ffdd33);
+                border-radius: 20px;
+            }
+            progress::-webkit-progress-value{
+                background-image:-webkit-linear-gradient(left, #ffb726,#ffdd33);
+                border-radius: 20px;
+            }
+        </style><style type="text/css">
+                        @font-face {
+                            font-family: 'SimSun';
+                            src: url('(BAD)COOKIERUN-BLACK.TTF');
+                        }
+                    </style><script src="https://api.gamemonetize.com/sdk.js"></script><meta http-equiv="origin-trial" content="A9AxgGSwmnfgzzkyJHILUr3H8nJ/3D+57oAsL4DBt4USlng4jZ0weq+fZtHC/Qwwn6gd4QSa5DzT3OBif+kXVA0AAAB4eyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AlK2UR5SkAlj8jjdEc9p3F3xuFYlF6LYjAML3EOqw1g26eCwWPjdmecULvBH5MVPoqKYrOfPhYVL71xAXI1IBQoAAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="></head>
+
+<body style="margin: 0px; overflow: hidden; user-select: none; -webkit-tap-highlight-color: rgba(200, 200, 200, 0);" class="">
+    <script>
+        //初始化渠道
+        h5splash.init({ appName: "Real-Flight-Simulator", channel: "cargames" })
+        //设置背景颜色
+        h5splash.setBackgroundColor("#d9f3ff")
+        console.error = console.log = console.info = console.warn = function () { };
+        //'puzzlegame'        //'cargames'        //'puzzlegame'        //'bestgames'
+    </script><div id="splash-root" class="loading-container" style="height: 540px; background: rgb(217, 243, 255); display: none;"><div class="img-container" style="margin-top: 10vh; display: flex;"><img class="logo-img" src="./@base/logo.png"><img class="banner-img" src="./@base/banner.jpg"></div><div class="progress-container" style="bottom: 5vh; top: auto; transform: none;"><p class="progress-text">Loading: 100%</p><progress class="progress-bar_" max="100" value="100"></progress><img class="progress-img" src="https://h5gamessdk.yyggames.com/sdk/s/_0000_car.png" style="display: none; max-width: 250px;"></div></div>
+    <style>
+        body {
+            cursor: default;
+            overflow: 'hidden';
+            /* 页面背景颜色 */
+            background: #d9f3ff
+        }
+        @font-face {font-family: 'Arial';src: url('(BAD)COOKIERUN-BLACK.TTF');}
+                   @font-face {font-family: 'Microsoft YaHei';src: url('(BAD)COOKIERUN-BLACK.TTF');}
+                   @font-face {font-family: 'SimSun';src: url('(BAD)COOKIERUN-BLACK.TTF');}
+                   @font-face {font-family: 'San Francisco';src: url('(BAD)COOKIERUN-BLACK.TTF');}
+                   @font-face {font-family: 'SimHei';src: url('(BAD)COOKIERUN-BLACK.TTF');}
+        /*SimSun*/
+    </style>
+    <script type="text/javascript">
+        function loadLib(url) {
+            var script = document.createElement("script");
+            script.async = false;
+            script.src = url;
+            document.body.appendChild(script);
+        }
+    </script>
+    <!-- <script type="text/javascript" src="https://h5gamessdk.yyggames.com/sdk/laya/2.8.0/laya.core.js"></script> -->
+    <script src="babel-require.js"></script>
+    <style>
+        /*SimSun*/
+        * {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        html {
+            touch-action: none
+        }
+
+        div {
+            text-align: center;
+        }
+    </style>
+    <script>
+        function isIOS() {
+            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        }
+        // 如果用户不在 iOS 设备上，添加额外的字体样式
+        if (!isIOS()) {
+            var style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = `
+                        @font-face {
+                            font-family: 'SimSun';
+                            src: url('(BAD)COOKIERUN-BLACK.TTF');
+                        }
+                    `;
+            document.head.appendChild(style);
+        }
+    </script>
+    <script type="text/javascript">
+        //在 iframe下 禁用 上下左右 促发滚动条
+        const keysToBlockWhenFramed = [32, 33, 34, 35, 36, 37, 38, 39, 40, 44];
+        document.addEventListener('keydown', function (info) {
+            if (window != window.top && keysToBlockWhenFramed.indexOf(info.which) > -1) {
+                info.preventDefault();
+                info.stopPropagation();
+            }
+        }, true)
+        document.addEventListener("mousedown", function () {
+            window.focus();
+        }, true);
+        document.addEventListener("touchstart", function () {
+            window.focus();
+        }, true);
+        document.addEventListener('gesturestart', function (event) {
+            var event = event || window.event
+            if (typeof event.preventDefault != 'undefined') {//w3c
+                event.preventDefault();
+            } else {
+                event.returnValue = false;//ie
+            }
+        });   
+        //游戏加载时关闭触控
+        document.addEventListener('gesturestart', function (event) {
+            event.preventDefault()
+        })
+    </script>
+    <script type="text/javascript" src="index.js"></script><script src="./libs/laya.core.js"></script><script src="./libs/laya.ui.js"></script><script src="./libs/laya.d3.js"></script><script src="./libs/laya.cannonPhysics.js"></script><script src="./libs/laya.physics3D.js"></script><script src="js/main.js"></script>
+
+
+<!----><div id="layaContainer"><canvas id="layaCanvas" width="1200" height="675" style="position: absolute; left: 0px; top: 0px; background: rgb(0, 0, 0); transform-origin: 0px 0px 0px; transform: matrix(0.8, 0, 0, 0.8, 0, 0); width: 1200px; height: 675px;"></canvas><div style="position: absolute; z-index: 100000;"></div></div><canvas width="1112" height="512" style="left: -10000px; position: absolute;"></canvas><div id="imaContainer" style="position: absolute; z-index: 10000; top: 0px; left: 0px; width: 100%; height: 100%; background-color: rgb(0, 0, 0); visibility: hidden; overflow: hidden;"><video id="imaVideo"></video></div><div id="imaContainer_new" style="position: absolute; z-index: 10000; top: 0px; left: 0px; width: 100%; height: 100%; background-color: rgb(0, 0, 0); visibility: hidden; overflow: hidden;"><video2 id="imaVideo2"></video2></div><div id="sdk__advertisement" style="position: fixed; z-index: 0; top: 0px; left: 0px; width: 100%; height: 100%; transform: translateX(-9999px); background-color: rgba(0, 0, 0, 0.8); opacity: 0; transition: opacity 300ms cubic-bezier(0.55, 0, 0.1, 1) 0s;"><div id="sdk__advertisement_slot" style="position: absolute; background-color: rgb(0, 0, 0); top: 0px; left: 0px; width: 960px; height: 540px;"><div style="position: absolute;"><div style="display: none;"><video title="Advertisement" webkit-playsinline="true" playsinline="true" style="background-color: rgb(0, 0, 0); position: absolute; width: 100%; height: 100%; left: 0px; top: 0px;"></video><div style="position: absolute; width: 100%; height: 100%; left: 0px; top: 0px;"></div></div><div style="display: none;"><video title="Advertisement" webkit-playsinline="true" playsinline="true" style="background-color: rgb(0, 0, 0); position: absolute; width: 100%; height: 100%; left: 0px; top: 0px;"></video><div style="position: absolute; width: 100%; height: 100%; left: 0px; top: 0px;"></div></div><iframe src="https://imasdk.googleapis.com/js/core/bridge3.650.0_en.html#goog_1296158167" allowfullscreen="" allow="autoplay;attribution-reporting" id="goog_1296158167" title="Advertisement" style="border: 0px; opacity: 0; margin: 0px; padding: 0px; position: relative; color-scheme: light;"></iframe><iframe title="Advertisement" style="display: none;"></iframe></div></div></div><iframe name="google_video_inner_static_iframe" id="google_video_inner_static_iframe" src="about:blank" style="height: 0px; width: 0px; display:none"></iframe></body></html>
